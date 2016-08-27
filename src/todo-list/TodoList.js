@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Todo from './todo';
 import { addTodo, removeTodo, toggleTodo } from './todoListState';
 
 // Define presentational component
@@ -24,7 +23,7 @@ export class TodoList extends Component {
           e.preventDefault();
           if (!this.state.addableTodoText.trim()) return;
 
-          onAddTodo(new Todo({ text: this.state.addableTodoText }));
+          onAddTodo(this.state.addableTodoText);
           this.setState({ addableTodoText: '' });
         }}>
           <input
@@ -33,7 +32,7 @@ export class TodoList extends Component {
             value={this.state.addableTodoText}
             onChange={this.handleAddableTodoTextChange}
           />
-          <button type="submit">Add Todo</button>
+          <button type="submit">+</button>
         </form>
 
         <ul>
@@ -48,7 +47,7 @@ export class TodoList extends Component {
 
 // Validate prop types during development to catch possible errors
 TodoList.propTypes = {
-  todos: PropTypes.arrayOf(React.PropTypes.instanceOf(Todo)).isRequired,
+  todos: PropTypes.arrayOf(React.PropTypes.object).isRequired,
   onAddTodo: PropTypes.func.isRequired,
   onRemoveTodo: PropTypes.func.isRequired,
   onToggleTodo: PropTypes.func.isRequired,
