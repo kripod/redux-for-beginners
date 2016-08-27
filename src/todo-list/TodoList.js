@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Todo from './Todo';
 import { addTodo, removeTodo, toggleTodo } from './todoListState';
 
 // Define presentational component
@@ -37,7 +38,12 @@ export class TodoList extends Component {
 
         <ul>
           {todos.map((todo) =>
-            <li key={todo.id}>{todo.text}</li>
+            <Todo
+              key={todo.id}
+              {...todo}
+              onToggle={onToggleTodo}
+              onRemove={onRemoveTodo}
+            />
           )}
         </ul>
       </div>
