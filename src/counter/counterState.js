@@ -9,11 +9,13 @@ export const decrementCounter = createAction('counter/DECREMENT');
 
 // Handle every dispatchable action by returning a new immutable state
 export default handleActions({
-  [incrementCounter]: (state, { payload = 1 }) => ({
-    value: state.value + payload
+  [incrementCounter]: (state, { payload: value = 1 }) => ({
+    ...state,
+    value: state.value + value,
   }),
 
-  [decrementCounter]: (state, { payload = 1 }) => ({
-    value: state.value - payload
+  [decrementCounter]: (state, { payload: value = 1 }) => ({
+    ...state,
+    value: state.value - value,
   }),
 }, initialState);

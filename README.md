@@ -7,7 +7,7 @@ uses [React] as its user interface library.
 [Redux]: http://redux.js.org
 [React]: https://facebook.github.io/react
 
-## Learn less, code less, do more
+## Learn less, do more
 
 Learning the philosophy behind Redux can be exhausting, especially when it comes
 to terminology or separation of concerns.
